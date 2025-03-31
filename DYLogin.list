@@ -1,0 +1,17 @@
+# NAME: DYLogin
+# AUTHOR: Lee
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2025-03-31 16:16:17
+# DOMAIN: 12
+DOMAIN,tnc0-alisc1.zijieapi.com
+DOMAIN,api5-normal-m.amemv.com
+DOMAIN,api5-core.amemv.com
+DOMAIN,abtest3-misc.zijieapi.com
+DOMAIN,polaris5-normal.zijieapi.com
+DOMAIN,mssdk.zijieapi.com
+DOMAIN,api5-normal.amemv.com
+DOMAIN,webcast5-normal.amemv.com
+DOMAIN,zlink.ugsdk.cn
+DOMAIN,www.fiddler2.com
+DOMAIN,10.141.153.124:180
+DOMAIN,47jl5go35jfbtf1qjocyfgcakai0mfk.z.cjjd14.com:33443

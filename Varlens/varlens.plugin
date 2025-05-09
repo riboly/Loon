@@ -6,4 +6,4 @@
 [MITM]
 hostname = mid.zineapi.com
 [Script]
-http-response ^https:\/\/mid\.zineapi\.com\/@varlens\/api\/user\/info\/ requires-body=1,script-path=https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/Varlens/Varlens.js
+http-response ^https:\/\/mid\.zineapi\.com\/@varlens\/api\/user\/info\/ requires-body=1,script-path=https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/Varlens/Varlens_bak.js

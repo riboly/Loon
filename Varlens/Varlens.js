@@ -16,7 +16,7 @@ TG频道群：https://t.me/py
 
 [rewrite_local]
 
-^https:\/\/mid\.zineapi\.com\/@varlens\/api\/user\/info\/ url script-response-body https://github.com/riboly/Loon/blob/main/Varlens/Varlens.js
+^https:\/\/mid\.zineapi\.com\/@varlens\/api\/user\/info\/ url script-response-body https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/Varlens/Varlens.js
 
 [mitm] 
 

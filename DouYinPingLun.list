@@ -1,0 +1,12 @@
+# NAME: DouYinPingLun
+# AUTHOR: blackmatrix7
+# REPO: https://github.com/blackmatrix7/ios_rule_script
+# UPDATED: 2024-07-03 16:17:40
+# DOMAIN-SUFFIX: 2
+# IP-CIDR: 4
+# IP-CIDR6: 1
+# TOTAL: 7
+DOMAIN-SUFFIX,mon0-misc-lq.amemv.com:443
+DOMAIN-SUFFIX,api5-normal-ipv6-lq.amemv.com:443
+DOMAIN-SUFFIX,mon0-misc-lq.amemv.com
+DOMAIN-SUFFIX,api5-normal-ipv6-lq.amemv.com

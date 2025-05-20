@@ -22,6 +22,8 @@ function loadCredentials() {
     log($persistentStore.read("sfacg_data"));
     const headers = {
         "apptoken": `${sfacgData.apptoken}`,
+		"Host": "91.jh.plus"
+		"Content-Type": "application/json"
     };
 	log("读取必要信息 apptoken:" + apptoken);
     return headers;
@@ -42,40 +44,43 @@ function getSignDate(){
 
 // 准备签到请求函数
 function prepareRequest(){
-    const body = getSignDate();
+    //const body = getSignDate();
     const headers = loadCredentials();
 
     return {
-        url: "https://api.sfacg.com/user/newSignInfo",
+        url: "https://91.jh.plus/lixin/api/sign-already",
         headers: headers,
-        body: JSON.stringify(body),
-        method: "PUT"
+        body: '{"uid":"","ds":"2025-05"}'’,
+        method: "POST"
     };
 }
 
-// 获取有效代券
+// 签到
 function getCoupon(callback){
     try{
-        log("开始获取代券数量", "getCoupon");
+        log("开始签到", "getCoupon");
         const sfacgData = JSON.parse($persistentStore.read("sfacg_data"));
 
-        log("读取到数据: " + $persistentStore.read("sfacg_data").substring(0, 50) + "...");
+        //log("读取到数据: " + $persistentStore.read("sfacg_data").substring(0, 50) + "...");
 
         const headers = {
             "apptoken": `${sfacgData.apptoken}`,
+			"Host": "91.jh.plus"
+			"Content-Type": "application/json"
         };
-		log("获取有效代券 apptoken:" + apptoken);	
+		log("签到 apptoken:" + apptoken);	
         log("构建请求头");
 
         const request = {
-            url: "https://api.sfacg.com/user/coupons",
+            url: "https://91.jh.plus/lixin/api/sign-already",
             headers: headers,
-            method: "GET"
+			body: '{"uid":"","ds":"2025-05"}'’,
+            method: "POST"
         };
 
         log("开始发送HTTP请求");
 
-        $httpClient.get(request, function(error, response, data){
+        $httpClient.POST(request, function(error, response, data){
             try{
                 if (error) {
                     log(`获取火券数量请求失败 Error:${error}`);
@@ -245,7 +250,7 @@ function main(){
     }
 
     const request = prepareRequest();
-    $httpClient.put(request, handleSignResult);
+    $httpClient.POST(request, handleSignResult);
 }
 
 // Run

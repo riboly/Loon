@@ -1,12 +1,10 @@
 /**
  * 脚本名称: 江湖获取Cookie
- * 脚本作者: 你呀
- * 更新日期: 2025-03-29 17:36:26
+ * 脚本作者: riboly
+ * 更新日期: 2025-05-20 12:16:16
  * 脚本功能: 江湖自动抓取Cookie
- * 触发方式: http-request ^https?:\/\/91\.jh\.plus\/lixin\/api\/info script-path=https://raw.githubusercontent.com/Heihuaf/LoonScript/refs/heads/main/js/JiangHu_Cookie.js
+ * 触发方式: http-request ^https?:\/\/91\.jh\.plus\/lixin\/api\/info script-path=https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/JiangHu/JiangHu_Cookie.js
  * 
- * 更新记录:
- * 2025-03-29: v1.0.0 初始版本发布
  * 
  */
 

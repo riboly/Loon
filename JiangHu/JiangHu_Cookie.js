@@ -71,7 +71,7 @@ function getCookie() {
     $persistentStore.write(JSON.stringify(sfacgData), "sfacg_data");
     log(`保存到sfacgdata:${JSON.stringify(sfacgData)}\n`);
 
-    if (updated === 5) {
+    if (updated === 1) {
         notify("✅江湖获取Cookie成功", `日期: ${getCurrentTime()}`);
         log(`获取成功，时间 ${getCurrentTime()}`)
         $done({});

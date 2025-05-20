@@ -56,187 +56,37 @@ function prepareRequest(){
 }
 
 // 签到
-function getCoupon(callback){
-    try{
-        log("开始签到", "getCoupon");
-        const sfacgData = JSON.parse($persistentStore.read("sfacg_data"));
-
-        //log("读取到数据: " + $persistentStore.read("sfacg_data").substring(0, 50) + "...");
-
-        const headers = {
-            "apptoken": `${sfacgData.apptoken}`,
-			"Host": "91.jh.plus"
-			"Content-Type": "application/json"
+function prepareRequest(){
+	
+	const sfacgData = JSON.parse($persistentStore.read("sfacg_data"));
+    	const postData = {
+            	url: "https://91.jh.plus/lixin/api/sign-already",
+		timeout: 2000,
+		alpn:"h2",
+	            headers: {
+	                "Host": "91.jh.plus",
+	                "Content-Type": "application/json",
+	                "Cookie": "wolfking.jeeplus.session.id=ccedb9da-c089-44b9-a9cc-0d2af72eb968",
+	                "User-Agent": "MallTalk/1.1 (iPhone; iOS 17.5.1; Scale/3.00)",
+	                "apptoken": `${sfacgData.apptoken}`,
+	            },
+	            body: JSON.stringify({
+	                uid: "720ebe555e21440895d6247bcd63eae5",
+	                ds: getCurrentDate()
+	            })
+		
         };
-		log("签到 apptoken:" + apptoken);	
-        log("构建请求头");
-
-        const request = {
-            url: "https://91.jh.plus/lixin/api/sign-already",
-            headers: headers,
-			body: '{"uid":"","ds":"2025-05"}'’,
-            method: "POST"
-        };
-
-        log("开始发送HTTP请求");
-
-        $httpClient.POST(request, function(error, response, data){
-            try{
-                if (error) {
-                    log(`获取火券数量请求失败 Error:${error}`);
-                    callback("获取失败");
-                    return;
-                }
-
-                log("收到HTTP请求");
-
-                //添加响应数据的检查
-                if(!data){
-                    log("响应数据为空");
-                    callback("空数据");
-                    return;
-                }
-
-                log(`响应数据: ${data.substring(0,50)}...`);
-
-                const result = JSON.parse(data).data;
-
-                if(!result || !Array.isArray(result)){
-                    log(`解析结果异常: ${JSON.stringify(result)}`);
-                    callback("数据异常");
-                    return;
-                }
-
-                let coupons = 0;
-                let expirationDate = "";
-                let expireCoupons = 0;
-                for (let i = 0; i < result.length; i++) {
-                    const coupon = result[i];
-                    if(coupon.usedCoupon === coupon.coupon){
-                        break;
-                    }
-                    coupons += (coupon.coupon - coupon.usedCoupon);
-                    expirationDate = coupon.expireDate.replace("T", " ");
-                    expireCoupons = (coupon.coupon - coupon.usedCoupon);
-                }
-
-
-                log(`剩余有效代券: ${coupons}`);
-                log(`最近的代券过期日期: ${expirationDate}`);
-                log("结束", "getCoupon")
-                callback({
-                    coupons: coupons,
-                    expDate: expirationDate.split(" ")[0],
-                    expTime: expirationDate.split(" ")[1],
-                    today: getSignDate().signDate,
-                    expCoupons: expireCoupons
-                });
-                
-            }catch(e){
-                log(`代券回调处理出错: ${e.message}`);
-                log("结束", "getCoupon")
-                callback("处理出错");
-            }
-        });
-    }catch(e){
-        log(`代券函数执行出错 ${e.message}`);
-        log("结束", "getCoupon")
-        callback("函数错误");
-    }
-    
+	//请求头构造结束
+	
+	
+	
 }
 
 // 处理结果函数
 function handleSignResult(error, response, data) {
-    if (error) {
-        log(`签到请求失败: ${error}`);
-        notify("签到请求失败", error);
-        $done({});
-        return;
-    }
-
-    // log(`error:${error}`);
-    // log(`response: ${JSON.stringify(response)}`);
-    // log(`data:${data}`);
-
-    log(`签到响应: ${data}`);
-
-    try{
-        const result = JSON.parse(data);
-
-        // 状态判断
-        if (result.status && result.status.httpCode === 200) {
-            const rewards = result.data;
-            let rewardText = "";
-
-            if (rewards && rewards.length > 0) {
-                rewards.forEach(reward => {
-                    rewardText += `${reward.num}${reward.name}`
-                });
-                getCoupon(function(result){
-                    log(`getCoupon回调函数执行，结果: ${result.coupons}`, "getCoupon");
-                    if(result.expDate === result.today){
-                        log(`过期日期:${result.expDate}，今日日期:${result.today}`);
-                        log(`result:${JSON.stringify(result)}`);
-                        notify(`签到成功,获得奖励:${rewardText}`, `剩余有效代券:${result.coupons}\n⚠️⚠️⚠️今日${result.expTime}过期:${result.expCoupons}代券`);
-                    }else{
-                        log(`过期日期:${result.expDate}，今日日期:${result.today}`);
-                        log(`result:${JSON.stringify(result)}`);
-                        notify(`签到成功,获得奖励:${rewardText}`, `剩余有效代券:${result.coupons}\n最近过期:${result.expCoupons}代券(Date:${result.expDate})`);
-                    }
-
-                    $done({});
-
-                });
-
-                return;
-            }else{
-                log("签到成功，无奖励");
-                notify("签到成功", "无奖励");
-                $done({});
-            }
-
-        }else if(result.status && result.status.httpCode === 400){
-            const errorMsg = result.status ? result.status.msg : "未知错误";
-            if(new Date().getHours() <1){
-                log(`签到系统维护， Info:${result.status.msg}`);
-                notify(`签到系统很可能在维护`,`Info:${errorMsg}`);
-                $done({});
-            }
-
-            log(`准备调用getCoupon函数查询代券`);
-            getCoupon(function(result){
-                log(`getCoupon回调函数执行，结果: ${result.coupons}`, "getCoupon");
-                if(result.expDate === result.today){
-                    log(`过期日期:${result.expDate}，今日日期:${result.today}`);
-                    log(`result:${JSON.stringify(result)}`);
-                    notify(`今日已经签到过了，剩余有效代券:${result.coupons}`,`⚠️⚠️⚠️今日${result.expTime}过期:${result.expCoupons}代券`);
-                }else{
-                    log(`过期日期:${result.expDate}，今日日期:${result.today}`);
-                    log(`result:${JSON.stringify(result)}`);
-                    notify(`今日已经签到过了，剩余有效代券:${result.coupons}`,`最近过期:${result.expCoupons}代券(Date:${result.expDate})`);
-                }
-                $done({});
-            });
-
-            return;
-        }else{
-            const errorMsg = result.status ? result.status.msg : "未知错误";
-            notify("签到失败", errorMsg);
-            log(`签到失败 ${errorMsg}`);
-
-            $done({});
-        }
-        
-    
-    }catch (e) {
-        log(`解析响应出错: ${e}`);
-        notify("处理签到响应出错", e.message);
-        $done({});
-    }
-
+	log("江湖签到返回data${data}");
+	log("江湖签到返回response${response}");
 }
-
 // 主要请求函数
 function main(){
     log("开始执行签到脚本");
@@ -250,7 +100,8 @@ function main(){
     }
 
     const request = prepareRequest();
-    $httpClient.POST(request, handleSignResult);
+    //$httpClient.POST(request, handleSignResult);
+	$httpClient.post(request, handleSignResult)
 }
 
 // Run

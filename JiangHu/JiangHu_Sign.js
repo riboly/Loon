@@ -36,8 +36,6 @@ function prepareRequest(){
 	const sfacgData = JSON.parse($persistentStore.read("sfacg_data"));
     	const postData = {
             	url: "https://91.jh.plus/lixin/api/sign-already",
-		timeout: 2000,
-		alpn:"h2",
 	            headers: {
 	                "Host": "91.jh.plus",
 	                "Content-Type": "application/json",
@@ -51,7 +49,6 @@ function prepareRequest(){
 	            })
 		
         };
-	//请求头构造结束
 	
 	
 	

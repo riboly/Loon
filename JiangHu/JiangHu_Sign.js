@@ -23,7 +23,7 @@ function loadCredentials() {
     const headers = {
         "apptoken": `${sfacgData.apptoken}`,
     };
-	log("apptoken:" + apptoken);
+	log("读取必要信息 apptoken:" + apptoken);
     return headers;
 }
 // 获取日期
@@ -64,7 +64,7 @@ function getCoupon(callback){
         const headers = {
             "apptoken": `${sfacgData.apptoken}`,
         };
-		log("apptoken:" + apptoken);	
+		log("获取有效代券 apptoken:" + apptoken);	
         log("构建请求头");
 
         const request = {

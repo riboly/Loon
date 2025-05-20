@@ -47,7 +47,7 @@ function prepareRequest(){
 	            },
 	            body: JSON.stringify({
 	                uid: "720ebe555e21440895d6247bcd63eae5",
-	                ds: getCurrentDate()
+	                ds: "2025-05"
 	            })
 		
         };

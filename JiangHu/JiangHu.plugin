@@ -1,0 +1,19 @@
+#!name= 江湖每日签到
+#!desc= 江湖每日签到以及Cookie获取
+#!author= Heihuaf
+#!homepage= https://github.com/Heihuaf/LoonScript
+#!icon= https://raw.githubusercontent.com/Heihuaf/LoonScript/refs/heads/main/IMG/SFACG_icon.PNG
+#!loon_version = 3.2.4(787)
+#!date = 2025-03-29 10:16:38
+#!tag = 签到
+
+[script]
+cron "30 9,21 * * *" script-path=https://raw.githubusercontent.com/Heihuaf/LoonScript/refs/heads/main/js/SFACG_Sign.js, tag=菠萝包每日签到
+
+http-request ^https?:\/\/91\.jh\.plus\/lixin\/api\/info script-path=https://raw.githubusercontent.com/Heihuaf/LoonScript/refs/heads/main/js/SFACG_Cookie.js, tag=菠萝包获取Cookie
+
+[mitm]
+hostname = 91.jh.plus
+
+
+^https?:\/\/91\.jh\.plus\/lixin\/api\/info

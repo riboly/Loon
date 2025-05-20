@@ -16,18 +16,6 @@ function log(message, title) {
 function notify(title, message) {
     $notification.post("江湖签到", title, message);
 }
-// 读取必要信息
-function loadCredentials() {
-    const sfacgData = JSON.parse($persistentStore.read("sfacg_data"));
-    log($persistentStore.read("sfacg_data"));
-    const headers = {
-        "apptoken": `${sfacgData.apptoken}`,
-		"Host": "91.jh.plus"
-		"Content-Type": "application/json"
-    };
-	log("读取必要信息 apptoken:" + apptoken);
-    return headers;
-}
 // 获取日期
 function getSignDate(){
     const today = new Date();
@@ -40,19 +28,6 @@ function getSignDate(){
     };
 
     return signDate;
-}
-
-// 准备签到请求函数
-function prepareRequest(){
-    //const body = getSignDate();
-    const headers = loadCredentials();
-
-    return {
-        url: "https://91.jh.plus/lixin/api/sign-already",
-        headers: headers,
-        body: '{"uid":"","ds":"2025-05"}'’,
-        method: "POST"
-    };
 }
 
 // 签到

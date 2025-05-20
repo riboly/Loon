@@ -2,7 +2,7 @@
  * 脚本名称: 江湖自动签到
  * 脚本作者: riboly
  * 更新日期: 2025-5-20 17:36:26
- * 脚本功能: 江湖轻小说自动签到
+ * 脚本功能: 江湖轻自动签到
  * 触发方式: cron "30 9/11 * * *" script-path=./JiangHu_Sign.js
  * 
  * 
@@ -14,7 +14,7 @@ function log(message, title) {
 }
 // 通知函数
 function notify(title, message) {
-    $notification.post("菠萝包轻小说签到", title, message);
+    $notification.post("江湖签到", title, message);
 }
 // 读取必要信息
 function loadCredentials() {

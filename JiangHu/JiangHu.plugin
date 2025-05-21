@@ -8,7 +8,7 @@
 #!tag = 签到
 
 [script]
-cron "30 9,21 * * *" script-path=https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/JiangHu/JiangHu_Sign.js, tag=江湖每日签到
+cron "11 8,18 * * *" script-path=https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/JiangHu/JiangHu_Sign.js, tag=江湖每日签到
 
 http-request ^https?:\/\/91\.jh\.plus\/lixin\/api\/info script-path=https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/JiangHu/JiangHu_Cookie.js, tag=江湖获取Cookie
 

@@ -3,7 +3,7 @@
  * 脚本作者: riboly
  * 更新日期: 2025-5-20 17:36:26
  * 脚本功能: 江湖轻自动签到
- * 触发方式: cron "30 9/11 * * *" script-path=./JiangHu_Sign.js
+ * 触发方式: cron "11 8,18 * * *" script-path=./JiangHu_Sign.js
  * 
  * 
  */

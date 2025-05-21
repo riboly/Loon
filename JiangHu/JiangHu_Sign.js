@@ -36,7 +36,7 @@ function loadCredentials() {
     const headers = {
          		"Host": "91.jh.plus",
 	                "Content-Type": "application/json",
-	                "Cookie": "wolfking.jeeplus.session.id=ccedb9da-c089-44b9-a9cc-0d2af72eb968",
+	                "Cookie": "",
 	                "User-Agent": "MallTalk/1.1 (iPhone; iOS 17.5.1; Scale/3.00)",
 	                "apptoken": `${sfacgData.apptoken}`
 	            
@@ -53,7 +53,7 @@ function prepareRequest(){
         url: "https://91.jh.plus/lixin/api/sign",
 	timeout: 5000,
         headers: headers,
-        body: '{"uid":"720ebe555e21440895d6247bcd63eae5"}',
+        body: '{"uid":""}',
 	alpn:"h2"
     };
 	

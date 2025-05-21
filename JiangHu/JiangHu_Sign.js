@@ -53,9 +53,9 @@ function prepareRequest(){
         url: "https://91.jh.plus/lixin/api/sign-already",
 	timeout: 5000,
         headers: headers,
-	binary-mode:false,//请求响应返回二进制格式，默认false
+	binary-mode:false,
         body: '{"uid":"","ds":"2025-05"}',
-	alpn:"h2",
+	alpn:"h2"
     };
 	
 }

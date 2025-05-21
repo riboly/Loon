@@ -29,29 +29,32 @@ function getSignDate(){
 
     return signDate;
 }
-
-// 签到
-function prepareRequest(){
-	const headers: {
-	                "Host": "91.jh.plus",
+// 构造协议头
+function loadCredentials() {
+    //const sfacgData = JSON.parse($persistentStore.read("sfacg_data"));
+    //log($persistentStore.read("sfacg_data"));
+    const headers = {
+         		"Host": "91.jh.plus",
 	                "Content-Type": "application/json",
 	                "Cookie": "wolfking.jeeplus.session.id=ccedb9da-c089-44b9-a9cc-0d2af72eb968",
 	                "User-Agent": "MallTalk/1.1 (iPhone; iOS 17.5.1; Scale/3.00)",
 	                "apptoken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI3MjBlYmU1NTVlMjE0NDA4OTVkNjI0N2JjZDYzZWFlNSIsImV4cCI6MTc0ODMyNzk2OH0.HGoAn6nzfSDRz2SYOAwDt8l7sO-VgMgCiUXHPsv03hM"
-	            },
-	
-	const url: "https://91.jh.plus/lixin/api/sign-already",
-	const body: JSON.stringify({
-	                uid: "720ebe555e21440895d6247bcd63eae5",
-	                ds: "2025-05"
-	            }),
+	            
+    };
 
+    return headers;
+}
+
+
+// 签到
+function prepareRequest(){
+	const headers = loadCredentials();
 	return {
-        url: url,
+        url: "https://91.jh.plus/lixin/api/sign-already",
         headers: headers,
-        body: body,
+        body: '{"uid":"","ds":"2025-05"}',
         method: "post"
-	    };
+    };
 	
 }
 

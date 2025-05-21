@@ -36,7 +36,6 @@ function loadCredentials() {
     const headers = {
          		"Host": "91.jh.plus",
 	                "Content-Type": "application/json",
-	                "Cookie": "",
 	                "User-Agent": "MallTalk/1.1 (iPhone; iOS 17.5.1; Scale/3.00)",
 	                "apptoken": `${sfacgData.apptoken}`
 	            

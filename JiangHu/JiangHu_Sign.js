@@ -61,8 +61,16 @@ function prepareRequest(){
 
 // 处理结果函数
 function handleSignResult(error, response, data) {
-	log("江湖签到返回${data}","江湖签到返回");
-	log("江湖签到返回${response}","江湖签到返回");
+	//log("江湖签到返回${data}","江湖签到返回");
+	//log("江湖签到返回${response}","江湖签到返回");
+	if (error) {
+	        log(`签到请求失败: ${error}`);
+	        notify("签到请求失败", error);
+	        $done({});
+	        return;
+	    }
+	log(`签到响应: ${data}`);
+	
 	return
 }
 // 主要请求函数

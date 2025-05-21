@@ -53,7 +53,6 @@ function prepareRequest(){
         url: "https://91.jh.plus/lixin/api/sign-already",
 	timeout: 5000,
         headers: headers,
-	binary-mode:false,
         body: '{"uid":"","ds":"2025-05"}',
 	alpn:"h2"
     };

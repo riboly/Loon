@@ -60,8 +60,8 @@ function prepareRequest(){
 
 // 处理结果函数
 function handleSignResult(error, response, data) {
-	log("江湖签到返回data${data}");
-	log("江湖签到返回response${response}");
+	log("江湖签到返回${data}");
+	log("江湖签到返回${response}");
 	return
 }
 // 主要请求函数

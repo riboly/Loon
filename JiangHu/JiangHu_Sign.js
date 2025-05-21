@@ -31,14 +31,14 @@ function getSignDate(){
 }
 // 构造协议头 headers
 function loadCredentials() {
-    //const sfacgData = JSON.parse($persistentStore.read("sfacg_data"));
-    //log($persistentStore.read("sfacg_data"));
+    const sfacgData = JSON.parse($persistentStore.read("sfacg_data"));
+    log($persistentStore.read("sfacg_data"));
     const headers = {
          		"Host": "91.jh.plus",
 	                "Content-Type": "application/json",
 	                "Cookie": "wolfking.jeeplus.session.id=ccedb9da-c089-44b9-a9cc-0d2af72eb968",
 	                "User-Agent": "MallTalk/1.1 (iPhone; iOS 17.5.1; Scale/3.00)",
-	                "apptoken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOiI3MjBlYmU1NTVlMjE0NDA4OTVkNjI0N2JjZDYzZWFlNSIsImV4cCI6MTc0ODMyNzk2OH0.HGoAn6nzfSDRz2SYOAwDt8l7sO-VgMgCiUXHPsv03hM"
+	                "apptoken": `${sfacgData.apptoken}`
 	            
     };
 
@@ -50,10 +50,10 @@ function loadCredentials() {
 function prepareRequest(){
 	const headers = loadCredentials();
 	return {
-        url: "https://91.jh.plus/lixin/api/sign-already",
+        url: "https://91.jh.plus/lixin/api/sign",
 	timeout: 5000,
         headers: headers,
-        body: '{"uid":"","ds":"2025-05"}',
+        body: '{"uid":"720ebe555e21440895d6247bcd63eae5"}',
 	alpn:"h2"
     };
 	

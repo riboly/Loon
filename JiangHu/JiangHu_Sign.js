@@ -29,7 +29,7 @@ function getSignDate(){
 
     return signDate;
 }
-// 构造协议头
+// 构造协议头 headers
 function loadCredentials() {
     //const sfacgData = JSON.parse($persistentStore.read("sfacg_data"));
     //log($persistentStore.read("sfacg_data"));
@@ -46,14 +46,16 @@ function loadCredentials() {
 }
 
 
-// 签到
+// 构造params
 function prepareRequest(){
 	const headers = loadCredentials();
 	return {
         url: "https://91.jh.plus/lixin/api/sign-already",
+	timeout: 5000,
         headers: headers,
+	binary-mode:false,//请求响应返回二进制格式，默认false
         body: '{"uid":"","ds":"2025-05"}',
-        method: "post"
+	alpn:"h2",
     };
 	
 }

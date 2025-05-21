@@ -69,7 +69,7 @@ function handleSignResult(error, response, data) {
 	        return;
 	    }
 	log(`签到响应: ${data}`);
-	
+	notify("签到返回", `响应: ${data}`);
 	return
 }
 // 主要请求函数

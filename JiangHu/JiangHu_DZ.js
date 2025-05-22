@@ -70,6 +70,10 @@ function handleSignResult(error, response, data) {
 	    }
 	log(`签到响应: ${data}`);
 	notify("✬", `响应: ${data}`);
+    
+    const jsonData = JSON.parse(`${data}`);  // 手动解析
+    const id1 = jsonData.data.list[0].id;
+    log(`第一个id：` + id1);
 	return
 }
 // 主要请求函数

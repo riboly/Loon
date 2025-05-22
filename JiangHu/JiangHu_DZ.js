@@ -3,7 +3,7 @@
  * 脚本作者: riboly
  * 更新日期: 2025-5-20 17:36:26
  * 脚本功能: 江湖轻自动签到
- * 触发方式: cron "11 8,18 * * *" script-path=./JiangHu_Sign.js
+ * 触发方式: cron "11 8,18 * * *" script-path=./JiangHu_DZ.js
  * 
  * 
  */
@@ -45,20 +45,20 @@ function loadCredentials() {
 }
 
 
-// 构造params
-function prepareRequest(){
+// 构造数据发送数据包params
+function prepareRequest(J_URL,J_body){
 	const headers = loadCredentials();
 	return {
-        url: "https://91.jh.plus/lixin/api/sign",
+        url: ${J_URL},
 	timeout: 5000,
         headers: headers,
-        body: '{"uid":""}',
+        body: ${J_body}',
 	alpn:"h2"
     };
 	
 }
 
-// 处理结果函数
+// 处理网络返回数据包
 function handleSignResult(error, response, data) {
 	//log("江湖签到返回${data}","江湖签到返回");
 	//log("江湖签到返回${response}","江湖签到返回");
@@ -84,7 +84,7 @@ function main(){
         return;
     }
 
-    const request = prepareRequest();
+    const request = prepareRequest("https://91.jh.plus/lixin/api/circle-list","{"uid":"","key":"","search":"2","type":"0","pageSize":"5","pageNo":"1"}");
     //$httpClient.POST(request, handleSignResult);
 	$httpClient.post(request, handleSignResult)
 }

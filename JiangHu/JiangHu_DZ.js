@@ -60,22 +60,43 @@ function prepareRequest(J_URL,J_body){
 
 // 处理网络返回数据包
 function handleSignResult(error, response, data) {
-	//log("江湖签到返回${data}","江湖签到返回");
-	//log("江湖签到返回${response}","江湖签到返回");
+	//log(`签到响应: ${data}`);
+	//notify("✬", `响应: ${data}`);
 	if (error) {
 	        log(`签到请求失败: ${error}`);
 	        notify("签到请求失败", error);
 	        $done({});
 	        return;
 	    }
-	log(`签到响应: ${data}`);
-	notify("✬", `响应: ${data}`);
+	
     
     const jsonData = JSON.parse(`${data}`);  // 手动解析
     const id1 = jsonData.data.list[0].id;
     log(`第一个id：` + id1);
-	return
+    //开始点赞
+	const url = "https://91.jh.plus/lixin/api/like-circle"
+    	//const body = '{"uid":"","key":"","search":"2","type":"0","pageSize":"5","pageNo":"1"}'
+	const body = '{"id":"' + id1 + '","uid":"720ebe555e21440895d6247bcd63eae5"}'
+    	const request = prepareRequest(url,body);
+	$httpClient.post(request, handleSignResult2)
+    return
 }
+// 处理网络返回数据包 点赞
+function handleSignResult2(error, response, data) {
+	log(`点赞响应: ${data}`);
+	//notify("✬", `点赞响应: ${data}`);
+	if (error) {
+	        log(`签到请求失败: ${error}`);
+	        notify("签到请求失败", error);
+	        $done({});
+	        return;
+	    }
+    return
+}
+
+
+
+
 // 主要请求函数
 function main(){
     log("开始执行签到脚本");

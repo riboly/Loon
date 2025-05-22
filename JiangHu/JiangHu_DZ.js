@@ -49,10 +49,10 @@ function loadCredentials() {
 function prepareRequest(J_URL,J_body){
 	const headers = loadCredentials();
 	return {
-        url: ${J_URL},
+        url: `${J_URL}`,
 	timeout: 5000,
         headers: headers,
-        body: ${J_body}',
+        body: `${J_body}`,
 	alpn:"h2"
     };
 	

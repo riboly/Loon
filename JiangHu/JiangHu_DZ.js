@@ -84,7 +84,7 @@ function main(){
         return;
     }
     const url = "https://91.jh.plus/lixin/api/circle-list"
-    const body = "{"uid":"","key":"","search":"2","type":"0","pageSize":"5","pageNo":"1"}"
+    const body = '{"uid":"","key":"","search":"2","type":"0","pageSize":"5","pageNo":"1"}'
     const request = prepareRequest(url,body);
     //$httpClient.POST(request, handleSignResult);
 	$httpClient.post(request, handleSignResult)

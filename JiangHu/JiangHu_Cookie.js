@@ -4,7 +4,7 @@
  * 更新日期: 2025-05-20 12:16:16
  * 脚本功能: 江湖自动抓取Cookie
  * 触发方式: http-request ^https?:\/\/91\.jh\.plus\/lixin\/api\/sign-already script-path=https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/JiangHu/JiangHu_Cookie.js
- * 
+ * 抓包入口：“我的”界面，点右上角日历，即可抓到数据包
  * 
  */
 

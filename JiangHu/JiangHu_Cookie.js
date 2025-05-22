@@ -3,7 +3,7 @@
  * 脚本作者: riboly
  * 更新日期: 2025-05-20 12:16:16
  * 脚本功能: 江湖自动抓取Cookie
- * 触发方式: http-request ^https?:\/\/91\.jh\.plus\/lixin\/api\/info script-path=https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/JiangHu/JiangHu_Cookie.js
+ * 触发方式: http-request ^https?:\/\/91\.jh\.plus\/lixin\/api\/sign-already script-path=https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/JiangHu/JiangHu_Cookie.js
  * 
  * 
  */

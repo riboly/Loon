@@ -1,0 +1,11 @@
+#!name= 91短视频vip
+#!desc= 看视频无时长限制
+#!author= riboly
+#!homepage= https://github.com/riboly/Loon/
+#!icon= https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/JiangHu/1.png
+
+[Rewrite]
+^https?(:\/\/10play)\.(.*)\.m3u8\?(.*) header https://long.$2.m3u8?$3
+
+[mitm]
+hostname = *.oaiaui.cn,10play.*.cn,10play.*.com

@@ -2,7 +2,7 @@
 #!desc= 看视频无时长限制
 #!author= riboly
 #!homepage= https://github.com/riboly/Loon/
-#!icon= https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/JiangHu/1.png
+#!icon= https://raw.githubusercontent.com/riboly/Loon/refs/heads/main/91video/icon.png
 
 [Rewrite]
 ^https?(:\/\/10play)\.(.*)\.m3u8\?(.*) header https://long.$2.m3u8?$3

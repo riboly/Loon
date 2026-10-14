@@ -22,7 +22,7 @@ Issue or a Pull Request.
 
 ## 📂 Repository Structure
 
-| Path       | Type             | 描述                                                  |
+| Path       | Type             | Description                                                  |
 | ---------- | ---------------- | ------------------------------------------------------------ |
 | `*.list`   | Rule sets        | Remote routing rules, e.g. `DYLogin.list`, `DouYinPingLun.list`, `BaiDuDiTu.list` — route traffic by domain/IP |
 | `*.plugin` | Plugins          | Loon plugin bundles, e.g. `JiangHu.plugin`, `91video.plugin` — typically include MITM, rewrite rules, and scripts |
@@ -39,7 +39,7 @@ Issue or a Pull Request.
 
 1. Copy the Raw URL of the file, e.g.:
    `https://raw.githubusercontent.com/riboly/Loon/main/DYLogin.list`
-2. Open Loon → **Config** → **规则**
+2. Open Loon → **Config** → **Rules**
 3. Tap **+** in the top-right corner → **Import from URL**, paste the link and save
 4. Enable the rule set in the rules list
 
